@@ -37,18 +37,26 @@ src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.j
 
     <div class="navbar">
       <a href="index.html" class="logo">Rakshika</a>
-      <ul class="nav-links">
+
+      <ul class="nav-links" id="navLinks">
         <li><a href="index.html">Home</a></li>
         <li><a href="work.html">Work</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
-      <button class="hamburger">☰</button>
+
+      <button
+        class="hamburger"
+        id="hamburger"
+        aria-label="Toggle navigation"
+        aria-expanded="false"
+        aria-controls="navLinks"
+      >
+        ☰
+      </button>
     </div>
 
     <!----------ABOUT PAGE CONTENT ---------->
-
-
 
 <div class="about-page">
 
@@ -151,5 +159,6 @@ src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.j
         <p>© 2026 Rakshika. All rights reserved.</p>
       </div>
     </footer>
+    <script src="script.js"></script>
   </body>
 </html>

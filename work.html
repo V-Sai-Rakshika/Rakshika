@@ -33,13 +33,23 @@
 
     <div class="navbar">
       <a href="index.html" class="logo">Rakshika</a>
-      <ul class="nav-links">
+
+      <ul class="nav-links" id="navLinks">
         <li><a href="index.html">Home</a></li>
         <li><a href="work.html">Work</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
-      <button class="hamburger">☰</button>
+
+      <button
+        class="hamburger"
+        id="hamburger"
+        aria-label="Toggle navigation"
+        aria-expanded="false"
+        aria-controls="navLinks"
+      >
+        ☰
+      </button>
     </div>
 
     <!----------WORK PAGE CONTENT ---------->
@@ -51,7 +61,7 @@
         visually engaging designs.
       </p>
 
-      <h2>Web Development</h2>
+      <!-- <h2>Web Development</h2> -->
       <div class="work-cards">
         <div class="work-card">
           <h2>Harvestpedia</h2>
@@ -66,23 +76,20 @@
             smarter and more sustainable farming practices.
           </p>
           <a
-            href="https://harvestpedia.vercel.app"
+            href="projects/harvestpedia.html"
             class="view-button"
             target="_blank"
             >View Site</a
           >
         </div>
         <div class="work-card">
-          <h2>La Moda</h2>
-          <img src="images/LaModa.png" alt="La Moda Website Screenshot" />
+          <h2>Personal Portfolio Website</h2>
+          <img src="images/portfolio.png" alt="Personal Portfolio Website Screenshot" />
 
-          <p>
-            La Moda is a fashion e-commerce platform designed to showcase trendy
-            clothing and provide users with a seamless and engaging online
-            shopping experience.
+          <p> A responsive personal portfolio showcasing my skills, projects, and development journey. Designed to highlight my technical abilities, creativity, and experience through a clean and interactive interface.
           </p>
           <a
-            href="https://la-moda.onrender.com"
+            href="projects/personal-portfolio.html"
             class="view-button"
             target="_blank"
             >View Site</a
@@ -101,10 +108,25 @@
             rescued animals with loving families, making pet adoption easier and
             promoting responsible pet ownership.
           </p>
-          <a href="xxxxxxxx" class="view-button" target="_blank">View Site</a>
+          <a href="projects/pet-adoption-center.html" class="view-button" target="_blank">View Site</a>
+        </div>
+
+        <div class="work-card">
+          <h2>low-poly 3D avatar</h2>
+          <img
+            src="images/3dmodel.png"
+            alt="3D Model Screenshot"
+          />
+
+          <p>
+            A custom low-poly 3D avatar designed and modeled in Blender to represent me. The model features a stylized appearance with carefully designed facial details, clothing, colors, and proportions.
+          </p>
+          <a href="projects/3dmodel.html" class="view-button" target="_blank">View Model</a>
         </div>
       </div>
     </div>
+   
+   
     <footer>
         <div class="footer-logo">Rakshika</div>
         <p>
@@ -140,5 +162,6 @@
         <p>© 2026 Rakshika. All rights reserved.</p>
       </div>
     </footer>
+    <script src="script.js"></script>
   </body>
 </html>

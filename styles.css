@@ -40,20 +40,24 @@ ul {
 }
 
 /*----------------------------- HOME PAGE -----------------------------*/
+
 .home {
   display: flex;
   align-items: center;
-  padding: 20px;
+  gap: clamp(0px, 1vw, 15px);
+  padding: clamp(10px, 2vw, 20px);
 }
 
 .home-page-content {
+  flex: 1 1 60%;
+  min-width: 0;
   max-width: 900px;
-  width: 100%;
-  margin-top: 50px;
+  margin-top: clamp(10px, 4vw, 50px);
   color: var(--text);
 }
+
 .home-page-content h1 {
-  font-size: 5rem;
+  font-size: clamp(2.2rem, 5vw, 5rem);
   font-family: "Fraunces", serif;
   font-weight: 700;
   margin: 0 20px 20px;
@@ -61,19 +65,26 @@ ul {
 
 .home-page-content p {
   max-width: 700px;
-  width: 100%;
+  width: auto;
   font-family: "Sora", sans-serif;
-  font-size: 1.5rem;
-  padding: 0px 20px 20px;
+  font-size: clamp(1rem, 1.5vw, 1.5rem);
+  padding: 0 20px 20px;
   line-height: 1.5;
 }
-
+.home-page-define {
+  font-family: "Sora", sans-serif;
+  font-size: clamp(0.8rem, 1.1vw, 1.1rem);
+  padding: 0 20px 20px;
+  line-height: 1.5;
+}
 .hero-model {
-  width: 45%;
-  height: 550px;
+  flex: 0 1 40%;
+  min-width: 0;
+  height: clamp(300px, 40vw, 550px);
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-left: clamp(-20px, -1vw, 0px);
 }
 
 .hero-model model-viewer {
@@ -83,14 +94,16 @@ ul {
 }
 
 /*----------------------------- NAVIGATION BAR -----------------------------*/
+
 .navbar {
   font-family: "Sora", sans-serif;
-  padding: 0px 35px;
-  margin: 0px 10px;
+  padding: 0 clamp(10px, 3vw, 35px);
+  margin: 0 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: rgba(255, 255, 255, 0.1);
+  position: relative;
 }
 
 .navbar a {
@@ -99,27 +112,29 @@ ul {
 }
 
 .logo {
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 2vw, 2rem);
   font-family: "Fraunces", serif;
 }
 
 .nav-links {
-  padding: 0px 20px;
-  font-size: 1.5rem;
+  padding: 0 clamp(5px, 2vw, 20px);
+  font-size: clamp(1rem, 1.3vw, 1.5rem);
   display: flex;
-  flex-direction: row;
   align-items: center;
-  gap: 3.3rem;
+  gap: clamp(15px, 3vw, 3.3rem);
 }
 
 .nav-links a {
   position: relative;
   display: inline-block;
   color: var(--text);
+  transition:
+    transform 0.2s ease-in-out,
+    color 0.2s ease-in-out;
 }
+
 .nav-links a:hover {
   transform: translateY(-3px);
-  transition: transform 0.2s ease-in-out;
   color: var(--accent2);
 }
 
@@ -131,14 +146,13 @@ ul {
   width: 100%;
   height: 4px;
   background: var(--accent);
-  border-radius: 999px;
+  border-radius: 50px;
 }
 
 .hamburger {
   border: none;
   background: none;
-  font-size: 1.4rem;
-  font-weight: 500;
+  font-size: 1.5rem;
   cursor: pointer;
   display: none;
 }
@@ -146,65 +160,52 @@ ul {
 .hamburger:hover {
   color: var(--accent);
 }
-@media (max-width: 1024px) {
+
+@media (max-width: 550px) {
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+
+    flex-direction: column;
+    align-items: center;
+    gap: 0px;
+
+    width: 100px;
+    padding: 10px;
+
+    background-color: rgba(247, 244, 213, 0.9);
+    border: 1px solid rgba(10, 51, 35, 0.5);
+    border-radius: 15px;
+
+    z-index: 1000;
+  }
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links a:hover::after {
+    content: none;
+  }
+
   .nav-links a {
-    font-size: 1.4rem;
+    padding: 8px 15px;
+    border-radius: 10px;
+    transition:
+      transform 0.2s ease-in-out,
+      color 0.2s ease-in-out;
   }
-  .home-page-content h1 {
-    font-size: 4rem;
-  }
-  .home-page-content p {
-    font-size: 1.3rem;
-  }
-  .logo {
-    font-size: 1.8rem;
-  }
-}
 
-@media (max-width: 768px) {
-  .nav-links {
-    display: none;
+  .nav-links a:hover {
+    background-color: rgba(211, 150, 140, 0.3);
+    transform: translateY(-3px);
   }
+
   .hamburger {
     display: block;
   }
-  .home-page-content h1 {
-    font-size: 3.2rem;
-  }
-  .home-page-content p {
-    font-size: 1.1rem;
-  }
-  .logo {
-    font-size: 1.5rem;
-    padding-right: 20px;
-  }
-  .nav-links {
-    gap: 40px;
-  }
 }
-
-@media (max-width: 480px) {
-  .nav-links {
-    display: none;
-  }
-  .hamburger {
-    display: block;
-  }
-  .home-page-content h1 {
-    font-size: 3.2rem;
-  }
-  .home-page-content p {
-    font-size: 1.2rem;
-  }
-  .logo {
-    font-size: 1.7rem;
-    padding-right: 20px;
-  }
-  .nav-links {
-    gap: 40px;
-  }
-}
-
 /*----------------------------- BUTTONS -----------------------------*/
 
 /*----------------------------- HOME PAGE BUTTONS -----------------------------*/
@@ -214,9 +215,9 @@ ul {
   border-radius: 20px;
   text-align: center;
   color: var(--text);
-  font-size: 1.2rem;
+  font-size: clamp(0.8rem, 1.2vw, 1.2rem);
   font-family: "Sora", sans-serif;
-  padding: 15px 100px;
+  padding: 15px clamp(20px, 5vw, 100px);
   margin: 30px 15px;
   background-color: rgba(211, 150, 140, 0.7);
   align-items: center;
@@ -228,7 +229,7 @@ ul {
 .home-button::after {
   content: "arrow_forward";
   font-family: "Material Symbols Outlined";
-  font-size: 20px;
+  font-size: clamp(14px, 1vw, 20px);
   line-height: 1;
   vertical-align: middle;
   margin-left: 6px;
@@ -239,19 +240,21 @@ ul {
 .view-button {
   display: flex;
   width: 75%;
-  margin: 30px auto;
-  padding: 12px 20px;
+  margin: 15px auto;
+  padding: 12px 30px clamp(10px, 2vw, 20px);
 
   border: 1px solid var(--text);
   border-radius: 20px;
   text-align: center;
+  text-decoration: none;
+  color: var(--text);
   font-family: "Sora", sans-serif;
-  font-size: 1.3rem;
+  font-size: clamp(0.85rem, 1.3vw, 1.3rem);
   background-color: rgba(211, 150, 140, 0.7);
 
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 4px;
 
   transition: transform 0.3s ease-in-out;
 }
@@ -259,7 +262,7 @@ ul {
 .view-button::after {
   content: "arrow_forward";
   font-family: "Material Symbols Outlined";
-  font-size: 20px;
+  font-size: clamp(14px, 1vw, 20px);
   line-height: 1;
   vertical-align: middle;
   margin-left: 6px;
@@ -271,10 +274,19 @@ ul {
 .view-button:hover::after {
   content: "arrow_outward";
   font-family: "Material Symbols Outlined";
-  font-size: 20px;
+  font-size: clamp(14px, 1vw, 20px);
   line-height: 1;
   vertical-align: middle;
   margin-left: 6px;
+}
+
+.home-button,
+.view-button {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
 }
 
 .home-button:hover,
@@ -284,133 +296,122 @@ ul {
   transition: transform 0.2s ease-in-out;
 }
 
+@media (max-width: 768px) {
+  .home-button,
+  .view-button {
+    margin: 10px 15px;
+  }
+}
+@media (max-width: 550px) {
+  .home-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
 /*----------------------------- PROJECT PAGE-----------------------------*/
 
+/* PROJECT SECTION */
+
 .project-page {
-  margin: 100px 20px 50px 20px;
+  margin: clamp(50px, 8vw, 100px) clamp(10px, 2vw, 20px);
 }
+
+.project-page h1 {
+  font-size: clamp(2.2rem, 4vw, 4rem);
+  font-family: "Fraunces", serif;
+  color: var(--text);
+  font-weight: 700;
+  margin: 0 20px clamp(30px, 6vw, 90px);
+}
+
 .project-cards {
-  display: flex;
-  justify-content: space-evenly;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(15px, 2vw, 30px);
 }
 
 .card {
-  width: 500px;
-  height: 300px;
-  border: var(--text) 1px solid;
-  border-radius: 5%;
-  padding: 10px;
-  margin: 20px;
+  min-width: 0;
+  border: 1px solid var(--text);
+  border-radius: 20px;
+  padding: clamp(15px, 2vw, 25px);
   background-color: rgba(211, 150, 140, 0.5);
-  justify-content: space-evenly;
-
-  flex-wrap: wrap;
-}
-.project-page h1 {
-  font-size: 4rem;
-  font-family: "Fraunces", serif;
-  color: var(--text);
-  font-weight: 700;
-  margin: 0 20px 20px;
-  text-align: left;
-  margin-bottom: 90px;
-}
-.project-page h2 {
-  font-family: "Fraunces", serif;
-  color: var(--text);
-  font-size: 2rem;
-  padding-left: 10px;
-}
-.project-page p {
-  font-family: "Sora", sans-serif;
-  color: var(--text);
-  font-size: 1.3rem;
-  font-weight: 400;
-  padding-left: 10px;
-}
-
-@media (max-width: 1112px) {
-  .project-cards {
-    flex-wrap: wrap;
-  }
-  .card {
-    width: cal(50%-20%);
-    max-width: 400px;
-  }
-}
-
-@media (max-width: 480px) {
-  .project-cards {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-  }
-}
-
-/*----------------------------- WORK PAGE -----------------------------*/
-
-.work-page {
-  margin: 50px 20px 50px 20px;
-}
-
-.work-cards {
-  display: flex;
-  justify-content: space-evenly;
-}
-
-.work-card {
-  width: 500px;
-  min-height: 600px;
-  box-sizing: border-box;
-
-  border: var(--text) 1px solid;
-  border-radius: 30px;
-  padding: 20px;
-  margin: 20px;
 
   display: flex;
   flex-direction: column;
-  margin-top: 20px;
-
-  background-color: rgba(211, 150, 140, 0.5);
+  justify-content: space-between;
+  align-items: center;
 }
+
+.project-page h2 {
+  font-family: "Fraunces", serif;
+  color: var(--text);
+  font-size: clamp(1.3rem, 2vw, 2rem);
+}
+
+.project-page p {
+  font-family: "Sora", sans-serif;
+  color: var(--text);
+  font-size: clamp(0.95rem, 1.2vw, 1.3rem);
+}
+
+@media (max-width: 900px) {
+  .project-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 550px) {
+  .project-cards {
+    grid-template-columns: 1fr;
+  }
+}
+/*----------------------------- WORK PAGE -----------------------------*/
+
+.work-page {
+  margin: clamp(50px, 8vw, 100px) clamp(10px, 2vw, 20px);
+}
+
 .work-page h1 {
-  font-size: 4rem;
+  font-size: clamp(2.2rem, 4vw, 4rem);
   font-family: "Fraunces", serif;
   color: var(--text);
   font-weight: 700;
-  margin: 0 20px 20px 20px;
-  text-align: left;
+  margin: 0 20px clamp(30px, 6vw, 90px);
+}
+
+.work-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(15px, 2vw, 30px);
+}
+
+.work-card {
+  min-width: 0;
+  border: 1px solid var(--text);
+  border-radius: 20px;
+  padding: clamp(15px, 2vw, 25px);
+  background-color: rgba(211, 150, 140, 0.5);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .work-page h2 {
   font-family: "Fraunces", serif;
   color: var(--text);
-  font-size: 2rem;
-  padding-left: 20px;
-  max-width: 1000px;
-  line-height: 1.6;
+  font-size: clamp(1.3rem, 2vw, 2rem);
 }
 
 .work-page p {
   font-family: "Sora", sans-serif;
   color: var(--text);
-  font-size: 1.3rem;
-  font-weight: 400;
-  padding-left: 20px;
-}
-.work-card p {
-  flex-grow: 1;
+  font-size: clamp(0.95rem, 1.2vw, 1.3rem);
 }
 
-.work-page a {
-  text-decoration: none;
-  color: var(--text);
-  font-family: "Sora", sans-serif;
-  font-size: 1.3rem;
-  font-weight: 400;
-  padding-left: 10px;
-}
 .work-page img {
   width: 100%;
   aspect-ratio: 1555 / 900;
@@ -419,55 +420,96 @@ ul {
   display: block;
 }
 
-@media (max-width: 1112px) {
+@media (max-width: 900px) {
   .work-cards {
-    flex-wrap: wrap;
-  }
-
-  .work-card {
-    width: calc(50% - 40px);
-    max-width: 400px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 550px) {
   .work-cards {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .work-card {
-    width: 100%;
-    max-width: 450px;
-    margin: 15px 0;
+    grid-template-columns: 1fr;
   }
 }
 
 /* ABOUT PAGE */
 
+/*----------------------------- ABOUT PAGE -----------------------------*/
+
 .about-page {
-  margin: 50px 20px 50px 20px;
+  margin: clamp(30px, 5vw, 50px) clamp(10px, 2vw, 20px);
   display: flex;
   align-items: stretch;
-  gap: 30px;
+  gap: clamp(15px, 2vw, 30px);
 }
+
+.about-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.about-page h1,
+.about-info h1 {
+  padding: 0px 20px;
+  font-size: clamp(2.2rem, 4vw, 4rem);
+  font-family: "Fraunces", serif;
+  color: var(--text);
+  font-weight: 700;
+  text-align: left;
+}
+
+.about-page h2,
+.about-info h2 {
+  font-family: "Fraunces", serif;
+  color: var(--text);
+  font-size: clamp(1.3rem, 2vw, 2rem);
+  padding: 10px 20px 20px;
+}
+
+.about-page p,
+.about-info p {
+  font-family: "Sora", sans-serif;
+  color: var(--text);
+  font-size: clamp(0.95rem, 1.3vw, 1.3rem);
+  font-weight: 400;
+  line-height: 1.5;
+  padding-left: 20px;
+}
+
+.my-model {
+  flex: 0 0 25%;
+  min-width: 0;
+  align-self: stretch;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+}
+
+.my-model model-viewer {
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+}
+
+/*----------------------------- SKILL CARDS -----------------------------*/
 
 .skill-cards {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 15px;
-  margin: 0px 20px 0px 20px;
+  gap: clamp(10px, 1.5vw, 15px);
+  margin: 0 clamp(10px, 2vw, 20px);
 }
 
 .skill-card {
   width: auto;
   min-width: 0;
-  height: 230px;
+  min-height: clamp(180px, 18vw, 230px);
+  height: auto;
   box-sizing: border-box;
 
   border: 1px solid var(--text);
   border-radius: 15px;
-  padding: 5px 15px 15px;
+  padding: 5px clamp(10px, 1.5vw, 15px) 15px;
   margin: 0;
 
   background-color: rgba(211, 150, 140, 0.5);
@@ -476,67 +518,33 @@ ul {
 .skill-card h2 {
   font-family: "Fraunces", serif;
   color: var(--text);
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 1.2vw, 1.2rem);
   padding-left: 10px;
 }
 
-.about-page h1,
-.about-info h1 {
-  font-size: 4rem;
-  font-family: "Fraunces", serif;
-  color: var(--text);
-  font-weight: 700;
-  text-align: left;
-}
-.about-page h2,
-.about-info h2 {
-  font-family: "Fraunces", serif;
-  color: var(--text);
-  font-size: 2rem;
-  padding-left: 10px 20px 20px;
-}
-
-.about-page p,
-.about-info p {
-  font-family: "Sora", sans-serif;
-  color: var(--text);
-  font-size: 1.3rem;
-  font-weight: 400;
-  line-height: 30px;
-  padding-left: 20px;
-}
-
-.my-model {
-  flex: 0 0 25%;
-  display: flex;
-}
-
-.my-model model-viewer {
-  width: 100%;
-  height: 100%;
-}
+/*----------------------------- MORE INFO -----------------------------*/
 
 .more-info {
-  margin: 50px 20px 50px 20px;
+  margin: clamp(30px, 5vw, 50px) clamp(10px, 2vw, 20px);
   width: auto;
 }
 
 .info-cards {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
-  margin: 20px;
+  gap: clamp(12px, 1.8vw, 18px);
+  margin: clamp(10px, 2vw, 20px);
 }
 
 .info-card {
   min-width: 0;
-  min-height: 225px;
+  min-height: clamp(180px, 18vw, 225px);
   height: auto;
   box-sizing: border-box;
 
   border: 1px solid var(--text);
   border-radius: 15px;
-  padding: 25px 35px;
+  padding: clamp(15px, 2.5vw, 25px) clamp(15px, 3.5vw, 35px);
   margin: 0;
 
   background-color: rgba(211, 150, 140, 0.3);
@@ -545,19 +553,48 @@ ul {
 .more-info h2 {
   font-family: "Fraunces", serif;
   color: var(--text);
-  font-size: 2rem;
-  padding-left: 20px;
-}
-.more-info p {
-  font-family: "Sora", sans-serif;
-  color: var(--text);
-  font-size: 1.3rem;
-  font-weight: 400;
+  font-size: clamp(1.3rem, 2vw, 2rem);
   padding-left: 20px;
 }
 
+.more-info p {
+  font-family: "Sora", sans-serif;
+  color: var(--text);
+  font-size: clamp(0.95rem, 1.3vw, 1.3rem);
+  font-weight: 400;
+  padding-left: 20px;
+  line-height: 1.5;
+}
+
+@media (max-width: 900px) {
+  .skill-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 768px) {
+  .about-page {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .my-model {
+    flex: 1 1 auto;
+    width: 100%;
+    height: clamp(250px, 60vw, 400px);
+  }
+
   .info-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .about-info {
+    width: 100%;
+  }
+}
+
+@media (max-width: 550px) {
+  .skill-cards {
     grid-template-columns: 1fr;
   }
 }
@@ -678,39 +715,40 @@ ul {
 }
 
 /* footer */
+
 footer {
   font-family: "Sora", sans-serif;
-  font-size: 1.3rem;
+  font-size: clamp(0.9rem, 1.2vw, 1.3rem);
   background-color: rgba(211, 150, 140, 0.7);
   color: var(--text);
-  padding: 60px 48px 10px;
-  border: none;
+  padding: clamp(25px, 5vw, 60px) clamp(15px, 4vw, 48px) 10px;
   border-radius: 30px;
-  margin: 0px;
-}
-
-.footer-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
-  margin-bottom: 48px;
+  margin: 0;
 }
 
 .footer-logo {
   font-family: "Fraunces", serif;
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 2vw, 2rem);
   font-weight: 500;
   margin-bottom: 14px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
 }
 
 .footer-brand p {
-  font-size: 13px;
+  font-size: clamp(0.8rem, 1vw, 0.95rem);
   opacity: 0.65;
   line-height: 1.7;
-  max-width: 230px;
+  max-width: 450px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(15px, 3vw, 40px);
+  margin-bottom: 30px;
+}
+
+.footer-column h3 {
+  font-size: clamp(1rem, 1.2vw, 1.2rem);
 }
 
 .footer-column a {
@@ -718,16 +756,224 @@ footer {
   color: var(--text);
   text-decoration: none;
   margin-bottom: 10px;
-  transition: color 0.2s;
+  transition: color 0.2s ease;
   cursor: pointer;
 }
+
 .footer-column a:hover {
   color: var(--accent2);
 }
+
 .footer-bottom {
-  padding-top: 28px;
+  padding-top: 20px;
   display: flex;
   align-items: center;
-  font-size: 12px;
+  font-size: 0.85rem;
   opacity: 0.5;
+}
+
+@media (max-width: 480px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 10px;
+  }
+
+  .footer-bottom {
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+/*----------------------------- INDIVIDUAL PROJECTS -----------------------------*/
+
+/*----------------------------- PROJECT DETAIL PAGE -----------------------------*/
+
+.project-detail {
+  margin: clamp(25px, 4vw, 40px) clamp(10px, 3vw, 30px) clamp(35px, 6vw, 60px);
+  color: var(--text);
+  min-width: 0;
+}
+
+.back-link {
+  text-decoration: none;
+  color: var(--text);
+  font-family: "Sora", sans-serif;
+  font-size: clamp(0.85rem, 1vw, 1rem);
+}
+
+/*----------------------------- PROJECT HERO -----------------------------*/
+
+.back-link::before {
+  content: "arrow_back";
+  font-family: "Material Symbols Outlined";
+  font-size: clamp(14px, 1vw, 20px);
+  vertical-align: middle;
+  margin-right: 6px;
+}
+
+.project-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+  gap: clamp(15px, 2vw, 30px);
+  align-items: center;
+  margin: clamp(15px, 2vw, 25px) 0 clamp(25px, 3vw, 35px);
+}
+
+.project-cover {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.project-heading {
+  min-width: 0;
+}
+
+.project-heading h1 {
+  font-family: "Fraunces", serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin: 0 0 clamp(10px, 1.5vw, 15px);
+}
+
+.project-tags {
+  display: flex;
+  gap: clamp(6px, 1vw, 10px);
+  flex-wrap: wrap;
+}
+
+.project-tags span {
+  border: 1px solid var(--text);
+  border-radius: 20px;
+  padding: clamp(5px, 0.7vw, 6px) clamp(10px, 1.5vw, 15px);
+  font-family: "Sora", sans-serif;
+  font-size: clamp(0.8rem, 1vw, 1rem);
+}
+
+.project-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(8px, 1.5vw, 15px);
+  margin-top: clamp(15px, 2vw, 25px);
+}
+
+.project-actions a {
+  text-decoration: none;
+  color: var(--text);
+  border: 1px solid var(--text);
+  border-radius: 20px;
+  padding: clamp(8px, 1vw, 10px) clamp(15px, 2vw, 25px);
+  font-family: "Sora", sans-serif;
+  font-size: clamp(0.85rem, 1vw, 1rem);
+  background-color: rgba(211, 150, 140, 0.7);
+}
+
+.project-actions a:hover {
+  background-color: var(--accent);
+  color: var(--text);
+  transform: translateY(-3px);
+  transition: transform 0.2s ease-in-out;
+}
+
+.project-actions a::after {
+  content: "arrow_forward";
+  font-family: "Material Symbols Outlined";
+  font-size: clamp(0.8rem, 1vw, 1rem);
+}
+
+.project-actions:hover a::after {
+  content: "arrow_outward";
+  font-family: "Material Symbols Outlined";
+  font-size: clamp(0.8rem, 1vw, 1rem);
+}
+
+/*----------------------------- PROJECT INFORMATION -----------------------------*/
+
+.project-info {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: clamp(15px, 2vw, 25px) clamp(20px, 3vw, 40px);
+  margin: clamp(25px, 3vw, 35px) clamp(5px, 1vw, 10px);
+}
+
+.project-info h2,
+.project-gallery h2 {
+  font-family: "Fraunces", serif;
+  font-size: clamp(1.3rem, 2vw, 1.7rem);
+}
+
+.project-info p,
+.project-info li {
+  font-family: "Sora", sans-serif;
+  font-size: clamp(0.9rem, 1.3vw, 1.1rem);
+  line-height: 1.6;
+}
+
+.tech-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(6px, 1vw, 10px);
+}
+
+.tech-items span {
+  border: 1px solid var(--text);
+  border-radius: 8px;
+  padding: clamp(7px, 1vw, 10px) clamp(10px, 1.5vw, 15px);
+  background-color: rgba(211, 150, 140, 0.3);
+  font-family: "Sora", sans-serif;
+  font-size: clamp(0.8rem, 1vw, 1rem);
+}
+
+/*----------------------------- PROJECT GALLERY -----------------------------*/
+
+.project-gallery {
+  margin: clamp(25px, 4vw, 40px) clamp(5px, 1vw, 10px);
+}
+
+.gallery-images {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(10px, 1.5vw, 20px);
+}
+
+.gallery-images img {
+  width: 100%;
+  aspect-ratio: 1555 / 900;
+  object-fit: contain;
+  border-radius: 8px;
+  display: block;
+  border: var(--text) 1px solid;
+}
+
+/*----------------------------- RESPONSIVE -----------------------------*/
+
+@media (max-width: 900px) {
+  .gallery-images {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .project-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .project-info {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 550px) {
+  .gallery-images {
+    grid-template-columns: 1fr;
+  }
+
+  .project-actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .project-actions a {
+    text-align: center;
+  }
 }
